@@ -28,15 +28,38 @@ int userScore;
 
 void addBody(int i, int j)
 {
-	node *tempBody;
+	node *tempBody, *cur;
+	int flag = 0;
+	cur = head->next;
 	tempBody = new node();
-	tempBody->i = i;
-	tempBody->j = j;
-	tempBody->body = bodyElement;
-	tempBody->next = head;
-	head = NULL;
-	head = tempBody;
-	tempBody = NULL;
+	while(cur)
+	{
+		if(cur->i == i &&cur->j == j)
+			break;
+		cur = cur->next;
+	}
+	if(!cur)
+	{
+		tempBody->i = i;
+		tempBody->j = j;
+		tempBody->body = bodyElement;
+		tempBody->next = head;
+		head = NULL;
+		head = tempBody;
+		tempBody = NULL;
+	}
+	else
+	{
+		tempBody = cur;
+		while(tempBody)
+		{
+			boundary[tempBody->i][tempBody->j] = '.';
+			tempBody = tempBody->next;
+		}
+		cur->next = NULL;
+		tempBody = NULL;
+		delete tempBody;
+	}	
 }
 
 void setup()
