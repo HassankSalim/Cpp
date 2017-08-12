@@ -4,6 +4,18 @@
 
 using namespace std;
 
+/*
+
+Sample Input :
+4
+-1 10 -2 3 4
+
+Sample Output :
+Sum :15
+From index 1 to 4
+
+*/
+
 struct custom
 {
   int i, j, sum;
@@ -12,14 +24,12 @@ struct custom
 int main() {
   int arr[100], n, temp_sum, temp;
   custom max_cur, max;
-  // max_cur = custom();
-  // max = custom();
   max_cur.i = 0;
   max_cur.j = 0;
   max.i = 0;
   max.j = 0;
-  max_cur.sum = -10;
-  max.sum = -10;
+  max_cur.sum = -100;
+  max.sum = -100;
   cin >> n;
   for(int i = 0; i < n; i++)
     cin >> arr[i];
